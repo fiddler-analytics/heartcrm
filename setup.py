@@ -13,7 +13,7 @@ def get_version():
     return version
 
 
-reqs = ['daiquiri', 'simple_salesforce']
+reqs = ['daiquiri', 'requests', 'simple_salesforce']
 
 test_reqs = ['ipython', 'pytest', 'pytest-sugar', 'pytest-cov', 'pylint']
 
