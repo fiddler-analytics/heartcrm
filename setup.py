@@ -1,14 +1,17 @@
 from setuptools import setup, find_packages
 import subprocess
+from subprocess import CalledProcessError
+
 
 def get_version():
     try:
         out = subprocess.check_output(['git', 'describe',
                                        '--tags', '--abbrev=0'])
         version = out.decode('utf-8').strip()
-    except:
-        version = ''
+    except CalledProcessError:
+        version = 'no-tag'
     return version
+
 
 reqs = ['daiquiri', 'simple_salesforce']
 
@@ -22,10 +25,6 @@ setup(
     packages=find_packages(),
     version=get_version(),
     install_requires=reqs,
-    extras_require={
-        'test': test_reqs
-    },
-    entry_points = {
-        'console_scripts':'heartcrm=hearcrm.cli:main'
-    }
+    extras_require={'test': test_reqs},
+    entry_points={'console_scripts': 'heartcrm=hearcrm.cli:main'}
 )
