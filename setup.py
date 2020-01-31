@@ -1,4 +1,10 @@
 from setuptools import setup, find_packages
+import subprocess
+
+def get_version():
+    out = subprocess.check_output(['git', 'describe', '--tags', '--abbrev=0'])
+    version = out.decode('utf-8').strip()
+    return version
 
 reqs = ['daiquiri', 'simple_salesforce']
 
@@ -10,7 +16,7 @@ setup(
     author='Matt Robinson',
     author_email='matt@fiddleranalytics.com',
     packages=find_packages(),
-    version='0.1.0',
+    version=get_version(),
     install_requires=reqs,
     extras_require={
         'test': test_reqs
