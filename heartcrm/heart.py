@@ -6,9 +6,7 @@ from simple_salesforce import Salesforce
 
 class HeartCRM(Salesforce):
     def __init__(self, **kwargs):
-        self.salesforce = None
         self._try_oauth_connect(**kwargs)
-        super().__init__(**kwargs)
 
     def _try_oauth_connect(self, **kwargs):
         """Attepts to connect to Salesforce using OAUTH2."""
@@ -30,7 +28,7 @@ class HeartCRM(Salesforce):
                                                            access_code,
                                                            sandbox)
 
-            super().__init__(access_token=access_token,
+            super().__init__(session_id=access_token,
                              instance_url=instance_url)
 
 
