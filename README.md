@@ -2,7 +2,7 @@
 
 ## Installation
 
-To install the package through PyPi, simple run
+To install the package through PyPI, simply run
 
 ```
 pip install heartcrm
