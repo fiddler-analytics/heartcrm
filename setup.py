@@ -13,9 +13,15 @@ def get_version():
     return version
 
 
-reqs = ['daiquiri', 'requests', 'simple_salesforce']
+reqs = ['daiquiri',
+        'requests',
+        'simple_salesforce']
 
-test_reqs = ['ipython', 'pytest', 'pytest-sugar', 'pytest-cov', 'pylint']
+test_reqs = ['ipython',
+             'pytest',
+             'pytest-sugar',
+             'pytest-cov',
+             'pylint']
 
 setup(
     name='heartcrm',

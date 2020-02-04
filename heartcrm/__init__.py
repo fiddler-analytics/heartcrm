@@ -1,5 +1,7 @@
 import subprocess
 
+from heartcrm.configure import configure
+
 
 def get_version():
     out = subprocess.check_output(['git', 'describe', '--tags', '--abbrev=0'])
@@ -8,3 +10,4 @@ def get_version():
 
 
 __version__ = get_version()
+__all__ = [configure]
