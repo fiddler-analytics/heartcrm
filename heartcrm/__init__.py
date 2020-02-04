@@ -1,6 +1,6 @@
 import subprocess
 
-from heartcrm.configure import configure
+from heartcrm.conf import configure
 
 
 def get_version():
