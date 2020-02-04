@@ -15,6 +15,7 @@ def get_version():
 
 reqs = ['daiquiri',
         'requests',
+        'pyyaml',
         'simple_salesforce']
 
 test_reqs = ['ipython',
