@@ -3,13 +3,37 @@ and uses that connection to make Salesforce API calls."""
 import requests
 from simple_salesforce import Salesforce
 
+from heartcrm.conf import read_heartrc
+
 
 class HeartCRM(Salesforce):
     def __init__(self, **kwargs):
-        self._try_oauth_connect(**kwargs)
+        self._try_oauth(**kwargs)
+        self._try_username_password(**kwargs)
 
-    def _try_oauth_connect(self, **kwargs):
-        """Attepts to connect to Salesforce using OAUTH2."""
+    def _try_username_password(self, **kwargs):
+        """Attempts to connect with username and password."""
+        username = kwargs.pop('username', None)
+        password = kwargs.pop('password', None)
+        security_token = kwargs.pop('security_token', None)
+        instance = kwargs.pop('instance', None)
+        domain = kwargs.pop('domain', None)
+
+        if any([username, password, security_token]):
+            if not all([username, password, security_token]):
+                raise ValueError('Authentication with username/password '
+                                 'requires a username, a password, and a '
+                                 'security_token.')
+
+        super().__init__(username=username,
+                         password=password,
+                         security_token=security_token,
+                         instance=instance,
+                         domain=domain)
+
+
+    def _try_oauth(self, **kwargs):
+        """Attempts to connect to Salesforce using OAUTH2."""
         redirect_uri = kwargs.pop('redirect_uri', None)
         client_id = kwargs.pop('client_id', None)
         client_secret = kwargs.pop('client_secret', None)
