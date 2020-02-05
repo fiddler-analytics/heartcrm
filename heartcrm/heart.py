@@ -3,8 +3,6 @@ and uses that connection to make Salesforce API calls."""
 import requests
 from simple_salesforce import Salesforce
 
-from heartcrm.conf import read_heartrc
-
 
 class HeartCRM(Salesforce):
     def __init__(self, **kwargs):
@@ -30,7 +28,6 @@ class HeartCRM(Salesforce):
                          security_token=security_token,
                          instance=instance,
                          domain=domain)
-
 
     def _try_oauth(self, **kwargs):
         """Attempts to connect to Salesforce using OAUTH2."""
