@@ -14,9 +14,10 @@ class HeartCRM(Salesforce):
         # to take precedence over the conigs.
         if not connected:
             config = read_heartrc()
-            for key in config:
-                if key not in kwargs:
-                    kwargs[key] = config[key]
+            if config:
+                for key in config:
+                    if key not in kwargs:
+                        kwargs[key] = config[key]
             self._try_oauth(**kwargs)
 
     def _try_username_password(self, **kwargs):
