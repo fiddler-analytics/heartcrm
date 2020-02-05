@@ -8,5 +8,5 @@ def test_conf_writes_to_heartrc(monkeypatch, tmpdir):
                       'client_secret': 'secret',
                       'sandbox': True}
     conf.configure(**desired_config)
-    config = conf._read_heartrc()
+    config = conf.read_heartrc()
     assert config == desired_config

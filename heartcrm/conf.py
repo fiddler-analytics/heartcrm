@@ -39,7 +39,7 @@ def configure(**kwargs):
     os.chmod(filename, stat.S_IRWXU)
 
 
-def _read_heartrc():
+def read_heartrc():
     """Finds the .heartrc configuration file. The order of precedence is:
     1. The current working directory
     2. The root directory for heartrc
