@@ -23,11 +23,11 @@ class HeartCRM(Salesforce):
                                  'requires a username, a password, and a '
                                  'security_token.')
 
-        super().__init__(username=username,
-                         password=password,
-                         security_token=security_token,
-                         instance=instance,
-                         domain=domain)
+            super().__init__(username=username,
+                             password=password,
+                             security_token=security_token,
+                             instance=instance,
+                             domain=domain)
 
     def _try_oauth(self, **kwargs):
         """Attempts to connect to Salesforce using OAUTH2."""
